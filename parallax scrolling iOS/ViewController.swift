@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         prepareNavBar()
-       
     }
     
+    //detect dark theme
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -38,7 +38,6 @@ class ViewController: UIViewController {
                 // dark mode detected
                 if offsetValue <= 1 {
                     prepareNavBar()
-
                 }
                 break
             }
@@ -47,6 +46,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Set up navigation bar property
     func prepareNavBar(){
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -63,6 +63,7 @@ class ViewController: UIViewController {
         lblTitle?.textColor = .white
     }
     
+    // Add effect when scrolling
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.tableView {
             var offset = scrollView.contentOffset.y / 125
@@ -90,7 +91,6 @@ class ViewController: UIViewController {
                 ]
                 self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
                 lblTitle?.textColor = UIColor(hue: 0, saturation: 0, brightness: 1 - offset, alpha: 1)
-//                lblTitle?.text = "Parallax Scrolling"
                 UIApplication.shared.statusBarView?.tintColor = color
                 UIApplication.shared.statusBarView?.backgroundColor = color
                 self.navigationController?.navigationBar.tintColor = UIColor(hue: 0, saturation: 0, brightness: 1 - offset, alpha: 1)
@@ -145,6 +145,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // set multiline Title
     func setMultilineTitle(title: String) -> UILabel {
         let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
         lblTitle.numberOfLines = 0
